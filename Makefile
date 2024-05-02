@@ -17,7 +17,7 @@ GIT_TREE_STATE=$(shell if [[ -z "`git status --porcelain`" ]]; then echo "clean"
 DOCKER_PUSH?=false
 DOCKER_BUILD_ARGS?=
 IMAGE_NAMESPACE?=ibnummuhammad
-VERSION?=v1.1.7
+VERSION?=v1.1.7.1
 BASE_VERSION:=v1.1.7
 
 override LDFLAGS += \
