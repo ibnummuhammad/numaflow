@@ -17,6 +17,8 @@ limitations under the License.
 package commands
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -29,12 +31,17 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
+	fmt.Println("masuk_Execute()...")
+	fmt.Println("rootCmd...")
+	fmt.Println(rootCmd)
 	if err := rootCmd.Execute(); err != nil {
 		panic(err)
 	}
+	fmt.Println("keluar_Execute()...")
 }
 
 func init() {
+	fmt.Println("masuk_init()...")
 	rootCmd.AddCommand(NewControllerCommand())
 	rootCmd.AddCommand(NewProcessorCommand())
 	rootCmd.AddCommand(NewISBSvcCreateCommand())
@@ -50,4 +57,5 @@ func init() {
 	rootCmd.AddCommand(NewSideInputsInitCommand())
 	rootCmd.AddCommand(NewSideInputsManagerCommand())
 	rootCmd.AddCommand(NewSideInputsSynchronizerCommand())
+	fmt.Println("keluar_init()...")
 }

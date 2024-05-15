@@ -18,6 +18,7 @@ package cmd
 
 import (
 	"crypto/tls"
+	"fmt"
 	"os"
 	"strconv"
 
@@ -44,6 +45,7 @@ const (
 )
 
 func Start() {
+	fmt.Println("masuk_webhook_Start()...")
 	logger := logging.NewLogger().Named("webhook")
 	restConfig, err := sharedutil.K8sRestConfig()
 	if err != nil {
@@ -88,4 +90,5 @@ func Start() {
 	if err := controller.Run(ctx); err != nil {
 		logger.Fatalw("Failed to create admission controller", zap.Error(err))
 	}
+	fmt.Println("keluar_webhook_Start()...")
 }

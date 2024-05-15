@@ -63,6 +63,7 @@ func NewServer(opts ServerOptions) *server {
 }
 
 func (s *server) Start() {
+	fmt.Println("masuk_server_Start()...")
 	logger := logging.NewLogger().Named("server")
 	router := gin.New()
 	router.Use(gin.LoggerWithConfig(gin.LoggerConfig{SkipPaths: []string{"/livez"}}))
@@ -122,6 +123,7 @@ func (s *server) Start() {
 			panic(err)
 		}
 	}
+	fmt.Println("keluar_server_Start()...")
 }
 
 func needToRewrite(path string) bool {

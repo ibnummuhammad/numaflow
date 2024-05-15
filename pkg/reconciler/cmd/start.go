@@ -18,6 +18,7 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 
 	"go.uber.org/zap"
@@ -45,6 +46,7 @@ import (
 )
 
 func Start(namespaced bool, managedNamespace string) {
+	fmt.Println("masuk_reconciler_Start()...")
 	logger := logging.NewLogger().Named("controller-manager")
 	config, err := reconciler.LoadConfig(func(err error) {
 		logger.Errorf("Failed to reload global configuration file", zap.Error(err))
@@ -203,6 +205,7 @@ func Start(namespaced bool, managedNamespace string) {
 	if err := mgr.Start(ctrl.SetupSignalHandler()); err != nil {
 		logger.Fatalw("Unable to run controller manager", zap.Error(err))
 	}
+	fmt.Println("keluar_reconciler_Start()...")
 }
 
 // LeaderElectionRunner is used to convert a function to be able to run as a LeaderElectionRunnable.

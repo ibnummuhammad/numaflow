@@ -35,6 +35,7 @@ import (
 )
 
 func NewProcessorCommand() *cobra.Command {
+	fmt.Println("masuk_NewProcessorCommand()...")
 	var (
 		processorType string
 		isbSvcType    string
@@ -109,5 +110,6 @@ func NewProcessorCommand() *cobra.Command {
 	}
 	command.Flags().StringVar(&processorType, "type", "", "Processor type, 'source', 'sink' or 'udf'")
 	command.Flags().StringVar(&isbSvcType, "isbsvc-type", "", "ISB Service type, e.g. jetstream")
+	fmt.Println("keluar_NewProcessorCommand()...")
 	return command
 }

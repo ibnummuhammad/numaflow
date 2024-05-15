@@ -17,9 +17,13 @@ limitations under the License.
 package main
 
 import (
+	"fmt"
+
 	"github.com/numaproj/numaflow/cmd/commands"
 )
 
 func main() {
+	fmt.Println("masuk_main()...")
 	commands.Execute()
+	fmt.Println("keluar_main()...")
 }

@@ -17,12 +17,15 @@ limitations under the License.
 package commands
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 
 	webhookcmd "github.com/numaproj/numaflow/webhook/cmd"
 )
 
 func NewWebhookCommand() *cobra.Command {
+	fmt.Println("masuk_NewWebhookCommand()...")
 	command := &cobra.Command{
 		Use:   "webhook-service",
 		Short: "Start validating Numaflow webhook server",
@@ -30,5 +33,6 @@ func NewWebhookCommand() *cobra.Command {
 			webhookcmd.Start()
 		},
 	}
+	fmt.Println("keluar_NewWebhookCommand()...")
 	return command
 }

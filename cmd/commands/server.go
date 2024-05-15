@@ -17,6 +17,7 @@ limitations under the License.
 package commands
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -26,6 +27,7 @@ import (
 )
 
 func NewServerCommand() *cobra.Command {
+	fmt.Println("masuk_NewServerCommand()...")
 	var (
 		insecure         bool
 		port             int
@@ -69,5 +71,6 @@ func NewServerCommand() *cobra.Command {
 	command.Flags().BoolVar(&disableAuth, "disable-auth", sharedutil.LookupEnvBoolOr("NUMAFLOW_SERVER_DISABLE_AUTH", false), "Whether to disable authentication and authorization, defaults to false.")
 	command.Flags().StringVar(&dexServerAddr, "dex-server-addr", sharedutil.LookupEnvStringOr("NUMAFLOW_SERVER_DEX_SERVER_ADDR", "http://numaflow-dex-server:5556/dex"), "The address of the Dex server.")
 	command.Flags().StringVar(&serverAddr, "server-addr", sharedutil.LookupEnvStringOr("NUMAFLOW_SERVER_ADDRESS", "https://localhost:8443"), "The external address of the Numaflow server.")
+	fmt.Println("keluar_NewServerCommand()...")
 	return command
 }
