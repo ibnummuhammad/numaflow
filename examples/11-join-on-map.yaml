@@ -11,10 +11,9 @@ spec:
       source:
         kafka:
           brokers:
-            - my-broker1:19700
-            - my-broker2:19700
-          topic: my-topic
-          consumerGroup: my-consumer-group
+            - host.minikube.internal:29092
+          topic: coba
+          consumerGroup: console-consumer-78922
     # Both of the incoming Vertices join on this Map Vertex
     - name: cat
       udf:
