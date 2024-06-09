@@ -15,6 +15,33 @@ as a Kubernetes custom resource and consists of one or more source, data process
 Numaflow installs in a few minutes and is easier and cheaper to use for simple data processing applications than a
 full-featured stream processing platforms.
 
+## Create Docker Image
+
+Increase version in Makefile
+
+```bash
+VERSION?=v1.2.1.1
+BASE_VERSION:=v1.2.1.1
+```
+
+Build docker image
+
+```bash
+make image
+````
+
+Build docker image
+
+```bash
+make image
+````
+
+Adjust image version in config/install.yaml
+
+```bash
+value: ibnummuhammad/numaflow:v1.2.1.1
+```
+
 ## Use Cases
 
 - Real-time data analytics applications.
