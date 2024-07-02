@@ -27,9 +27,9 @@ You will also need `kubectl` to manage the cluster. [Follow these steps to insta
 Once you have completed all the prerequisites, run the following command lines to install Numaflow and start the [Inter-Step Buffer Service](./core-concepts/inter-step-buffer-service.md) that handles communication between vertices.
 
 ```shell
-kubectl create ns numaflow-system
-kubectl apply -n numaflow-system -f https://raw.githubusercontent.com/numaproj/numaflow/stable/config/install.yaml
-kubectl apply -f https://raw.githubusercontent.com/numaproj/numaflow/stable/examples/0-isbsvc-jetstream.yaml
+kubectl create namespace numaflow-system
+kubectl apply --namespace numaflow-system --filename config/install.yaml
+kubectl apply --filename examples/0-isbsvc-jetstream.yaml
 ```
 
 ## Creating a simple pipeline
@@ -39,7 +39,7 @@ As an example, we will create a `simple pipeline` that contains a source vertex 
 Run the command below to create a simple pipeline.
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/numaproj/numaflow/stable/examples/1-simple-pipeline.yaml
+kubectl apply --filename examples/1-simple-pipeline.yaml
 ```
 
 To view a list of pipelines you've created, run:
@@ -99,15 +99,15 @@ Numaflow also comes with a built-in user interface.
 You can install it by running the below command.
 
 ```shell
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml 
-kubectl patch -n kube-system deployment metrics-server --type=json -p '[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
+kubectl apply --filename https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.7.1/components.yaml
+kubectl patch deployment metrics-server --namespace kube-system --type=json --patch '[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
 ```
 
 To port forward the UI, run the following command.
 
 ```shell
 # Port forward the UI to https://localhost:8443/
-kubectl -n numaflow-system port-forward deployment/numaflow-server 8443:8443
+kubectl port-forward deployment/numaflow-server --namespace numaflow-system 8443:8443
 ```
 
 This renders the following UI on https://localhost:8443/.
